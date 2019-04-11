@@ -7,6 +7,7 @@ class Home extends Component {
     return (
     <div className="App">
       <h1>Project Home</h1>
+      <p>API_URL: {window._env_.API_URL}</p>
       {/* Link to List.js */}
       <Link to={'./list'}>
         <button variant="raised">

@@ -1,0 +1,14 @@
+spec: 
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: react-client
+    spec:
+      containers:
+      - name: react-client
+        image: nepomucen/react-client-demo:v2
+        env:
+          # Replace with ServiceIP/ClusterIP of react-express api server
+          - name: API_URL
+            value: "http://localhost:5000"        

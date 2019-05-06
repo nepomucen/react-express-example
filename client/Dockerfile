@@ -18,6 +18,5 @@ RUN chmod +x ./public/env.sh
 # Make port 3000 available to the world outside this container
 EXPOSE 3000
 # Read-in env variable and run the app when the container launches
-CMD ["/bin/bash","-c", "/client/public/env.sh && yarn start"]
-#CMD ["yarn", "start"]
+CMD ["/bin/bash","-c", "/client/public/env.sh ./public && yarn start"]
 

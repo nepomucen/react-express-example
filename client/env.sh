@@ -1,11 +1,18 @@
 #!/bin/bash
 
+# Script takes 1 optional argument, that allows to specify location of .env file (defaults to current directory '.')
+# resulting env-config.js file will be written to the same location
+
+ARG1=${1:-.}
+ENV_CFG_PATH="$ARG1/env-config.js"
+ENV_DEFAULT_PATH="$ARG1/.env"
+
 # Recreate config file
-rm -rf ./public/env-config.js
-touch ./public/env-config.js
+rm -rf "$ENV_CFG_PATH"
+touch "$ENV_CFG_PATH"
 
 # Add assignment 
-echo "window._env_ = {" >> ./public/env-config.js
+echo "window._env_ = {" >> "$ENV_CFG_PATH"
 
 # Read each line in .env file
 # Each line represents key=value pairs
@@ -23,7 +30,7 @@ do
   [[ -z $value ]] && value=${varvalue}
   
   # Append configuration property to JS file
-  echo "  $varname: \"$value\"," >> ./public/env-config.js
-done < ./public/.env
+  echo "  $varname: \"$value\"," >> "$ENV_CFG_PATH"
+done < "$ENV_DEFAULT_PATH"
 
-echo "}" >> ./public/env-config.js
+echo "}" >> "$ENV_CFG_PATH"

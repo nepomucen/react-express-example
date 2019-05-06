@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: react-client-demo
+spec: 
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: react-client
+    spec:
+      containers:
+      - name: react-client
+        image: nepomucen/react-client-demo:v1
+        env:
+          # Replace with ServiceIP/ClusterIP of react-express api server
+          - name: API_URL
+            value: "http://react-express-server-service:5000"

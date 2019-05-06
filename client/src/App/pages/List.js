@@ -16,11 +16,11 @@ class List extends Component {
 
   // Retrieves the list of items from the Express app
   getList = () => {
-    fetch(window._env_.API_URL + '/api/getList')
+    fetch(window._env_.API_URL + '/api/getList', { mode: 'no-cors',})
     .then(res => res.json())
     .then(list => this.setState({ list }))
   }
-
+   
   render() {
     const { list } = this.state;
 

@@ -1,3 +1,3 @@
 window._env_ = {
-  API_URL: "https://my.new.dev.api.comek",
+  API_URL: "https//default.dev.api.krakow.pl",
 }
